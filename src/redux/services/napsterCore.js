@@ -3,15 +3,15 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const napsterCoreApi = createApi({
   reducerPath: 'napsterCoreApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api.napster.com/v2.0',
+    baseUrl: 'https://api.napster.com/v2.2/',
     prepareHeaders: (headers) => {
-      headers.set('client_id', import.meta.env.VITE_APP_NAPSTER_API_KEY);
+      headers.set('apikey', import.meta.env.VITE_APP_NAPSTER_API_KEY);
 
       return headers;
     },
   }),
   endpoints: (build) => ({
-    getTopTracks: build.query({ query: () => '/tracks/top?limit=5' }),
+    getTopTracks: build.query({ query: () => 'tracks/top?limit=20' }),
   }),
 });
 
